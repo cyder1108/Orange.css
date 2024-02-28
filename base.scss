@@ -1,0 +1,112 @@
+/***********************************************************
+*  All
+***********************************************************/
+* {
+  box-sizing: border-box;
+  z-index: 0;
+  backface-visibility: hidden;
+}
+
+/***********************************************************
+* html
+***********************************************************/
+:where(html) {
+  font-size: var(--font-size-m);
+}
+/***********************************************************
+* body
+***********************************************************/
+:where(body) {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  min-width: 320px;
+  background-color: var(--color-bg);
+  font-family: var(--font-family-default);
+  font-size: var(--font-size-m);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+/***********************************************************
+* Anchor
+***********************************************************/
+:where(a) {
+  text-decoration: none;
+  color: var(--color-anchor);
+  cursor: pointer;
+  &:hover { text-decoration: underline }
+}
+
+/***********************************************************
+* Strong
+***********************************************************/
+:where(strong) {
+  font-weight: var(--font-weight-bold);
+}
+
+/***********************************************************
+* HR
+***********************************************************/
+:where(hr) {
+  border: none;
+  height: 1px;
+  margin: 0;
+  background-color: var(--color-border);
+}
+
+/***********************************************************
+* Block quote
+***********************************************************/
+:where(blockquote) {
+  border-left: 5px solid var(--color-border);
+  padding-left: 1em;
+}
+
+/***********************************************************
+* Input and Textarea
+***********************************************************/
+:where(input[type=text]),
+:where(input[type=search]),
+:where(input[type=tel]),
+:where(input[type=url]),
+:where(input[type=email]),
+:where(input[type=password]),
+:where(input[type=datetime]),
+:where(input[type=date]),
+:where(input[type=month]),
+:where(input[type=week]),
+:where(input[type=time]),
+:where(input[type=datetime-local]),
+:where(input[type=number]),
+:where(textarea) {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-m);
+  font-family: var(--font-family-default);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  &:focus {
+    outline: none;
+    border-color: var(--color-anchor);
+  }
+}
+
+/***********************************************************
+* Button
+***********************************************************/
+:where(input[type=submit]),
+:where(button) {
+  color: var(--color-anchor);
+  font-size: var(--font-size-m);
+  background-color: transparent;
+  padding: none;
+  margin: none;
+  padding-block: 0;
+  padding-inline: 0;
+  display: inline;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+  --webkit-appearance: none
+}
+

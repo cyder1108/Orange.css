@@ -1,0 +1,18 @@
+@function env-prefix($name) {
+  @return "\\{#{$name}\\}";
+}
+
+@function class-name($prop,$value: "",$env: "",$isSubClass: false) {
+  $className: "#{$prop}";
+  @if $value != "" {
+    $className: "#{$className}\\:#{$value}";
+  }
+  @if $isSubClass {
+    $className: "_#{$className}";
+  }
+  @if $env != ""  {
+    $className: "#{env-prefix($env)}#{$className}";
+  }
+  @return $className;
+}
+

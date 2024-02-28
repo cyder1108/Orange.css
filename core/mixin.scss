@@ -1,0 +1,68 @@
+/***********************************************************
+* Each Break Points
+***********************************************************/
+@mixin each-break-points {
+  @content("");
+  @each $key, $value in $bp-width-map {
+    @media screen and ( max-width: $value ) { @content($key) }
+  }
+}
+
+
+/***********************************************************
+* BreakPoint Leth than or equal
+***********************************************************/
+@mixin bp-le( $key ) {
+  @media screen and ( max-width: map-get($bp-width-map, $key) ) {
+    @content;
+  }
+}
+
+/***********************************************************
+* Background pattern and gradient
+***********************************************************/
+@mixin gradient( $deg, $colors... ) {
+  $prop: "#{$deg},";
+  $len: length($colors);
+  @for $i from 1 through $len {
+    $color: nth($colors,$i);
+    $prop: $prop + "#{$color} #{math.div( 100%, ( $len - 1) ) * ($i - 1)},";
+  }
+  background-image: linear-gradient( unquote( str-slice( $prop, 0, -2 ) ) );
+}
+
+@mixin gradient-v( $colors... ) {
+  @include gradient( 180deg, $colors... );
+}
+
+@mixin gradient-h( $colors... ) {
+  @include gradient( 90deg, $colors... );
+}
+
+@mixin stripe( $deg, $interval, $color1, $color2 ) {
+  background-image: repeating-linear-gradient( $deg, $color1 0, $color1 $interval, $color2 $interval, $color2 $interval * 2 );
+}
+
+@mixin stripe-v( $interval, $color1, $color2 ) {
+  @include stripe(90deg, $interval, $color1, $color2 );
+}
+
+@mixin stripe-h( $interval, $color1, $color2 ) {
+  @include stripe(180deg, $interval, $color1, $color2 );
+}
+
+@mixin mesh( $deg, $border-width, $space-width, $border-color, $space-color ) {
+  background-color: $space-color;
+  background-image:
+    repeating-linear-gradient(
+      $deg,
+        transparent 0, transparent $space-width,
+        $border-color $space-width, $border-color $space-width + $border-width,
+    ),
+    repeating-linear-gradient(
+      $deg + 90,
+        transparent 0, transparent $space-width,
+        $border-color $space-width, $border-color $space-width + $border-width,
+    );
+
+}

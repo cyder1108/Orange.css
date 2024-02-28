@@ -1,0 +1,380 @@
+/***********************************************************
+* Visibility
+***********************************************************/
+@include each-break-points using ($env-key) {
+  .#{class-name("invisible", "", $env-key)} { content-visibility: hidden; }
+  .#{class-name("visible",   "", $env-key)} { content-visibility: visible; }
+}
+
+/***********************************************************
+* zIndex
+***********************************************************/
+@for $i from 0 through 10 {
+  .#{class-name("z", $i)} { z-index: $i; }
+}
+
+/***********************************************************
+* Display
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @each $key, $value in $display-map {
+    .#{class-name("dp",$key,$env-key)} { display: $value }
+  }
+}
+
+/***********************************************************
+* Position
+***********************************************************/
+@include each-break-points using ($env-key) {
+  $class-base: "pt";
+
+  // All
+  .#{class-name( "#{$class-base}-inset","0", $env-key)} { inset: 0 }
+  @each $key, $value in $width-map {
+    .#{class-name( "#{$class-base}-inset",$key, $env-key)} {
+      inset: var(--width-#{$key});
+    }
+    .#{class-name( "#{$class-base}-inset","-#{$key}", $env-key)} {
+      inset: calc(var(--width-#{$key})*-1);
+    }
+  }
+
+  // Horizontal
+  .#{class-name("#{$class-base}-h","0", $env-key)} {
+    left: 0;
+    right: 0;
+  }
+  @each $key, $value in $width-map {
+    .#{class-name("#{$class-base}-h",$key, $env-key)} {
+      left: var(--width-#{$key});
+      right: var(--width-#{$key});
+    }
+    .#{class-name("#{$class-base}-h","-#{$key}", $env-key)} {
+      left: calc(var(--width-#{$key})*-1);
+      right: calc(var(--width-#{$key})*-1);
+    }
+  }
+
+  // Vertical
+  .#{class-name("#{$class-base}-v","0", $env-key)} {
+    top: 0;
+    bottom: 0;
+  }
+  @each $key, $value in $width-map {
+    .#{class-name("#{$class-base}-v",$key, $env-key)} {
+      top: var(--width-#{$key});
+      bottom: var(--width-#{$key});
+    }
+    .#{class-name("#{$class-base}-v","-#{key}", $env-key)} {
+      top: calc(var(--width-#{$key})*-1);
+      bottom: calc(var(--width-#{$key})*-1);
+    }
+  }
+
+  // Directional
+  @each $class-option, $direction in $direction-map {
+    .#{class-name("#{$class-base}-#{$class-option}","0", $env-key)} {
+      #{$direction}: 0;
+    }
+    @each $key, $value in $width-map {
+      .#{class-name("#{$class-base}-#{$class-option}",$key, $env-key)} {
+        #{$direction}: var(--width-#{$key});
+      }
+      .#{class-name("#{$class-base}-#{$class-option}","-#{$key}", $env-key)} {
+        #{$direction}: calc(var(--width-#{$key})*-1);
+      }
+    }
+  }
+
+  @each $key, $value in $position-map {
+    .#{class-name( "#{$class-base}",$key, $env-key)} { position: $value }
+  }
+}
+
+/***********************************************************
+* Border
+***********************************************************/
+@include each-break-points using ($env-key) {
+  $class-base: "bd";
+  @each $key, $value in $border-width-map {
+    .#{class-name( $class-base, $key, $env-key)} { border: $value }
+  }
+  @each $direction-key, $direction in $direction-map {
+    @each $key, $value in $border-width-map {
+      .#{class-name( "#{$class-base}-#{$direction-key}", $key, $env-key)} {
+        border-#{$direction}: $value;
+      }
+    }
+  }
+}
+
+/***********************************************************
+* Margin & Padding
+***********************************************************/
+@each $class-base, $prop-name in ( mg: "margin", pd: "padding" ) {
+  @include each-break-points using ($env-key) {
+
+    // All
+    .#{class-name( $class-base,"0", $env-key)} { #{$prop-name}: 0 }
+    @each $key, $value in $width-map {
+      .#{class-name( $class-base,$key, $env-key)} {
+        #{$prop-name}: var(--width-#{$key} )
+      }
+      .#{class-name( $class-base,"-#{$key}", $env-key)} {
+        #{$prop-name}: calc(var(--width-#{$key})*-1)
+      }
+    }
+
+    // Horizontal
+    .#{class-name("#{$class-base}-h","0", $env-key)} {
+      #{$prop-name}-left: 0;
+      #{$prop-name}-right: 0;
+    }
+    @each $key, $value in $width-map {
+      .#{class-name("#{$class-base}-h",$key, $env-key)} {
+        #{$prop-name}-left: var(--width-#{$key});
+        #{$prop-name}-right: var(--width-#{$key});
+      }
+      .#{class-name("#{$class-base}-h","-#{$key}", $env-key)} {
+        #{$prop-name}-left: calc(var(--width-#{$key})*-1);
+        #{$prop-name}-right: calc(var(--width-#{$key})*-1);
+      }
+    }
+
+    // Vertical
+    .#{class-name("#{$class-base}-v","0", $env-key)} {
+      #{$prop-name}-top: 0;
+      #{$prop-name}-bottom: 0;
+    }
+    @each $key, $value in $width-map {
+      .#{class-name("#{$class-base}-v",$key, $env-key)} {
+        #{$prop-name}-top: var(--width-#{$key});
+        #{$prop-name}-bottom: var(--width-#{$key});
+      }
+      .#{class-name("#{$class-base}-v","-#{key}", $env-key)} {
+        #{$prop-name}-top: calc(var(--width-#{$key})*-1);
+        #{$prop-name}-bottom: calc(var(--width-#{$key})*-1);
+      }
+    }
+
+    // Directional
+    @each $class-option, $direction in $direction-map {
+      .#{class-name("#{$class-base}-#{$class-option}","0", $env-key)} {
+        #{$prop-name}-#{$direction}: 0;
+      }
+      @each $key, $value in $width-map {
+        .#{class-name("#{$class-base}-#{$class-option}",$key, $env-key)} {
+          #{$prop-name}-#{$direction}: var(--width-#{$key});
+        }
+        .#{class-name("#{$class-base}-#{$class-option}","-#{$key}", $env-key)} {
+          #{$prop-name}-#{$direction}: calc(var(--width-#{$key})*-1);
+        }
+      }
+    }
+  }
+}
+
+/***********************************************************
+* AlignItems & JustifyContent
+***********************************************************/
+@include each-break-points using ($env-key) {
+  $class-base: "align";
+  .#{class-name($class-base,"stretch", $env-key)} { align-items: stretch }
+  .#{class-name($class-base,"start", $env-key)} { align-items: start }
+  .#{class-name($class-base,"center", $env-key)} { align-items: center }
+  .#{class-name($class-base,"end", $env-key)} { align-items: end }
+}
+
+@include each-break-points using ($env-key) {
+  $class-base: "justify";
+  .#{class-name($class-base,"stretch", $env-key)} { justify-content: stretch }
+  .#{class-name($class-base,"start", $env-key)} { justify-content: start }
+  .#{class-name($class-base,"center", $env-key)} { justify-content: center }
+  .#{class-name($class-base,"end", $env-key)} { justify-content: end }
+}
+
+/***********************************************************
+* Gap
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @each $key, $value in $width-map {
+    .#{class-name("gap",$key, $env-key)} { gap: var(--width-#{$key}) }
+  }
+}
+
+/***********************************************************
+* GridColumn
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @for $i from 1 through 6 {
+    .#{class-name("col", $i, $env-key)} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+}
+
+/***********************************************************
+* Width & Height
+***********************************************************/
+@each $class-base, $prop-name in ( w: "width", h: "height" ) {
+  @include each-break-points using ($env-key) {
+    @each $key, $value in $named-width-map {
+      .#{class-name("#{$class-base}",$key, $env-key)} {
+        min-#{$prop-name}: var(--width-#{$key});
+        max-#{$prop-name}: var(--width-#{$key});
+      }
+    }
+    @for $i from 1 through 100 {
+      .#{class-name("#{$class-base}","#{$i*10}px", $env-key)} {
+        min-#{$prop-name}: $i * 10px;
+        max-#{$prop-name}: $i * 10px;
+      }
+    }
+    @for $i from 1 through 20 {
+      .#{class-name("#{$class-base}","#{$i*5}per", $env-key)} {
+        min-#{$prop-name}: $i * 5%;
+        max-#{$prop-name}: $i * 5%;
+      }
+    }
+    @for $i from 1 through 20 {
+      .#{class-name("#{$class-base}","#{$i}em", $env-key)} {
+        min-#{$prop-name}: $i * 1em;
+        max-#{$prop-name}: $i * 1em;
+      }
+    }
+    .#{class-name("#{$class-base}","0", $env-key)} {
+      min-#{$prop-name}: 0;
+      max-#{$prop-name}: 0;
+    }
+    .#{class-name("#{$class-base}","unset", $env-key)} {
+      min-#{$prop-name}: unset;
+      max-#{$prop-name}: unset;
+    }
+  }
+}
+
+/***********************************************************
+* Aspect
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @each $key, $value in $aspect-map {
+    .#{class-name("aspect", $key, $env-key)} {
+      aspect-ratio: var(--aspect-#{$key});
+    }
+  }
+}
+
+/***********************************************************
+* FontSize
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @each $key, $value in $font-size-map {
+    .#{class-name("fs", $key, $env-key)} {
+      font-size: var(--font-size-#{$key});
+    }
+  }
+}
+/***********************************************************
+* FontFamily
+***********************************************************/
+@each $key, $value in $font-family-map {
+  .#{class-name("ff", $key)} {
+    font-family: var(--font-family-#{$key});
+  }
+}
+/***********************************************************
+* FontWeight
+***********************************************************/
+@each $key, $value in $font-weight-map {
+  .#{class-name("fw", $key)} {
+    font-weight: $value;
+  }
+}
+
+/***********************************************************
+* TextAlign
+***********************************************************/
+@include each-break-points using ($env-key) {
+  .#{class-name("ta", "left", $env-key)} { text-align: left }
+  .#{class-name("ta", "right", $env-key)} { text-align: right }
+  .#{class-name("ta", "center", $env-key)} { text-align: center }
+}
+
+/***********************************************************
+* Clamp
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @for $line from 1 through 5 {
+    .#{class-name("clamp","#{$line}", $env-key)} {
+      display: -webkit-box;
+      -webkit-line-clamp: $line;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}
+
+
+/***********************************************************
+* Color
+***********************************************************/
+@each $key, $value in $color-map {
+  .#{class-name("color", $key)} {
+    color: var(--color-#{$key});
+  }
+}
+.#{class-name("color", "clip")} {
+  color: transparent;
+  -webkit-background-clip: text;
+}
+/***********************************************************
+* BackgroundColor
+***********************************************************/
+@each $key, $value in $color-map {
+  .#{class-name("bg", $key)} {
+    background-color: var(--color-#{$key});
+  }
+}
+
+/***********************************************************
+* BorderRadius
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @each $key, $value in $border-radius-map {
+    .#{class-name("round", $key, $env-key)} {
+      border-radius: $value;
+    }
+  }
+}
+
+/***********************************************************
+* BackdropFilter
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @each $key, $value in $filter-map {
+    .#{class-name("bf", $key, $env-key)} {
+      backdrop-filter: $value;
+      -webkit-backdrop-filter: $value;
+    }
+  }
+}
+
+
+/***********************************************************
+* Opacity
+***********************************************************/
+@for $v from 0 through 9 {
+  .#{class-name("op", "#{$v*10}")} { opacity: $v * .1 }
+}
+.#{class-name("op", "100")} { opacity: 1 }
+
+/***********************************************************
+* Overflow
+***********************************************************/
+.#{class-name("of", "hidden")} { overflow: hidden }
+
+/***********************************************************
+* Unique
+***********************************************************/
+.ignorePointer { pointer-events: none; }
+.monochrome { filter: grayscale(100%); -webkit-filter: grayscale(100%) }

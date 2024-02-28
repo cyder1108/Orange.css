@@ -1,0 +1,160 @@
+/***********************************************************
+* Width
+***********************************************************/
+$width-map: (
+  2xl: 60px,
+  xl:  50px,
+  l:   40px,
+  m:   30px,
+  s:   20px,
+  xs:  10px,
+  2xs: 5px,
+  auto: auto,
+);
+
+$named-width-map: (
+  global: 1080px,
+);
+
+$bp-width-map: (
+  l: map-get($named-width-map,"global") + map-get($width-map,"m"),
+  m: 960px,
+  s: 767px,
+);
+
+/***********************************************************
+* Border
+***********************************************************/
+$border-width-map: (
+  0: none,
+  thin: .9px solid var(--color-border),
+  1: 1px solid var(--color-border),
+  3: 3px solid var(--color-border),
+);
+
+/***********************************************************
+* BorderRadius
+***********************************************************/
+$border-radius-map: (
+  3: 3px,
+  10: 10px,
+  20: 20px,
+  30: 30px,
+);
+
+/***********************************************************
+* Aspect
+***********************************************************/
+$aspect-map: (
+  1x1:   1/1,
+  16x9: 16/9,
+  4x3:   4/3,
+);
+
+/***********************************************************
+* Font & Text
+***********************************************************/
+$font-size-map: (
+  2xl: 28px,
+  xl:  22px,
+  l:   18px,
+  m:   16px,
+  s:   14px,
+  xs:  12px,
+  2xs: 10px,
+);
+
+$font-family-map: (
+  default: sans-serif,
+);
+
+$line-height-map: (
+  title: 1.5,
+  sentence: 2.0,
+);
+
+$font-weight-map: (
+  bold: bold,
+);
+
+
+/***********************************************************
+* Color
+***********************************************************/
+$color-map: (
+  bg: #fff,
+  text: #333,
+  primary: #5af,
+  accent: #fa9,
+  anchor: #0af,
+  danger: #d95555,
+  success: #3aad3a,
+  info: #4592de,
+  caution: #d18700,
+  black: #000,
+  border: #ddd,
+  black95: rgba(black,.95), black90: rgba(black,.90),
+  black85: rgba(black,.85), black80: rgba(black,.80),
+  black75: rgba(black,.75), black70: rgba(black,.70),
+  black65: rgba(black,.65), black60: rgba(black,.60),
+  black55: rgba(black,.55), black50: rgba(black,.50),
+  black45: rgba(black,.45), black40: rgba(black,.40),
+  black35: rgba(black,.35), black30: rgba(black,.30),
+  black25: rgba(black,.25), black20: rgba(black,.20),
+  black15: rgba(black,.15), black10: rgba(black,.10),
+  black5: rgba(black,.05),
+  white: #000,
+  white95: rgba(white,.95), white90: rgba(white,.90),
+  white85: rgba(white,.85), white80: rgba(white,.80),
+  white75: rgba(white,.75), white70: rgba(white,.70),
+  white65: rgba(white,.65), white60: rgba(white,.60),
+  white55: rgba(white,.55), white50: rgba(white,.50),
+  white45: rgba(white,.45), white40: rgba(white,.40),
+  white35: rgba(white,.35), white30: rgba(white,.30),
+  white25: rgba(white,.25), white20: rgba(white,.20),
+  white15: rgba(white,.15), white10: rgba(white,.10),
+  white5: rgba(white,.05),
+);
+
+/***********************************************************
+* Display
+***********************************************************/
+$display-map: (
+  none: none,
+  inline: inline,
+  block: block,
+  inlineBlock: inline-block,
+  flex: flex,
+  inlineFlex: inline-flex,
+  grid: grid,
+  inlineGrid: inline-grid,
+);
+
+/***********************************************************
+* Direction
+***********************************************************/
+$direction-map: (
+  t: "top",
+  l: "left",
+  r: "right",
+  b: "bottom",
+);
+
+/***********************************************************
+* Position
+***********************************************************/
+$position-map: (
+  static: static,
+  relative: relative,
+  absolute: absolute,
+  fixed: fixed,
+  sticky: sticky,
+);
+
+/***********************************************************
+* BackdropFilter
+***********************************************************/
+$filter-map: (
+  blur10: blur(10px),
+  blur30: blur(30px),
+);

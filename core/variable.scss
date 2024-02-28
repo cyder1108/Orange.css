@@ -1,0 +1,23 @@
+:root {
+  @each $key, $value in $width-map {
+    --width-#{$key}: #{$value};
+  }
+  @each $key, $value in $named-width-map {
+    --width-#{$key}: #{$value};
+  }
+  @each $key, $value in $aspect-map {
+    --aspect-#{$key}: #{$value};
+  }
+  @each $key, $value in $font-size-map {
+    --font-size-#{$key}: #{$value};
+  }
+  @each $key, $value in $font-family-map {
+    --font-family-#{$key}: #{$value};
+  }
+  @each $key, $value in $line-height-map {
+    --line-height-#{$key}: #{$value};
+  }
+  @each $key, $value in $color-map {
+    --color-#{$key}: #{$value};
+  }
+}
