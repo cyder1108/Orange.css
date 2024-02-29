@@ -17,7 +17,7 @@ $named-width-map: (
 );
 
 $bp-width-map: (
-  l: map-get($named-width-map,"global") + map-get($width-map,"m"),
+  l: map-get($named-width-map,"global") + map-get($width-map,"m") * 2,
   m: 960px,
   s: 767px,
 );
@@ -73,6 +73,11 @@ $line-height-map: (
   sentence: 2.0,
 );
 
+$letter-spacing-map: (
+  default: 0,
+  1: .1em,
+);
+
 $font-weight-map: (
   bold: bold,
 );
@@ -91,8 +96,8 @@ $color-map: (
   success: #3aad3a,
   info: #4592de,
   caution: #d18700,
-  black: #000,
   border: #ddd,
+  black: black,
   black95: rgba(black,.95), black90: rgba(black,.90),
   black85: rgba(black,.85), black80: rgba(black,.80),
   black75: rgba(black,.75), black70: rgba(black,.70),
@@ -103,7 +108,7 @@ $color-map: (
   black25: rgba(black,.25), black20: rgba(black,.20),
   black15: rgba(black,.15), black10: rgba(black,.10),
   black5: rgba(black,.05),
-  white: #000,
+  white: white,
   white95: rgba(white,.95), white90: rgba(white,.90),
   white85: rgba(white,.85), white80: rgba(white,.80),
   white75: rgba(white,.75), white70: rgba(white,.70),

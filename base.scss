@@ -1,7 +1,7 @@
 /***********************************************************
 *  All
 ***********************************************************/
-* {
+:where(*) {
   box-sizing: border-box;
   z-index: 0;
   backface-visibility: hidden;
@@ -24,6 +24,7 @@
   font-family: var(--font-family-default);
   font-size: var(--font-size-m);
   color: var(--color-text);
+  letter-spacing: var(--letter-spacing-default);
   scroll-behavior: smooth;
 }
 
