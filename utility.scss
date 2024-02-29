@@ -265,6 +265,18 @@
 }
 
 /***********************************************************
+* Shadow
+***********************************************************/
+@include each-break-points using ($env-key) {
+  @each $key, $value in $shadow-map {
+    .#{class-name("shadow", $key, $env-key)} {
+      box-shadow: var(--shadow-#{$key});
+    }
+  }
+}
+
+
+/***********************************************************
 * FontSize
 ***********************************************************/
 @include each-break-points using ($env-key) {

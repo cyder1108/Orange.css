@@ -20,6 +20,9 @@
   @each $key, $value in $letter-spacing-map {
     --letter-spacing-#{$key}: #{$value};
   }
+  @each $key, $value in $shadow-map {
+    --shadow-#{$key}: #{$value};
+  }
   @each $key, $value in $color-map {
     --color-#{$key}: #{$value};
   }
