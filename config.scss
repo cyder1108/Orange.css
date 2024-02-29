@@ -47,7 +47,7 @@ $border-radius-map: (
 ***********************************************************/
 $shadow-map: (
   none: none,
-  narrow: 0 2px 6px 1px rgba(black,.05),
+  narrow: 0 2px 6px rgba(black,.05),
   wide: 0 6px 18px rgba(black,.05),
 );
 
@@ -96,15 +96,15 @@ $font-weight-map: (
 * Color
 ***********************************************************/
 $color-map: (
-  bg: #fff,
+  bg: #fafafa,
   text: #333,
-  primary: #5af,
-  accent: #fa9,
-  anchor: #0af,
-  danger: #d95555,
-  success: #3aad3a,
-  info: #4592de,
-  caution: #d18700,
+  primary: hsl(22deg,100%,50%),
+  accent: hsl(185deg, 80%, 45%),
+  anchor: hsl(195deg, 100%, 45%),
+  danger: hsl(0deg, 85%, 60%),
+  success: hsl(90deg, 90%, 35%),
+  info: hsl(210deg, 90%, 50%),
+  caution: hsl(48deg, 90%, 43%),
   border: #ddd,
   black: black,
   black95: rgba(black,.95), black90: rgba(black,.90),
