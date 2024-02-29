@@ -5,15 +5,17 @@
   display: flex;
   justify-contents: start;
   & > * { flex: 1 }
-  & > .fitContent {
-    flex: 0 1 auto;
-  }
 }
 @include each-break-points using ($env-key) {
   .#{class-name("flex","x", $env-key )}  { @include flex; flex-direction: row; }
   .#{class-name("flex","xr", $env-key )} { @include flex; flex-direction: row-reverse; }
   .#{class-name("flex","y", $env-key )}  { @include flex; flex-direction: column; }
   .#{class-name("flex","yr", $env-key )} { @include flex; flex-direction: column-reverse; }
+}
+
+@include each-break-points using ($env-key) {
+  .#{class-name("fit","content", $env-key )}  { flex: 0 1 auto }
+  .#{class-name("fit","auto", $env-key )}  { flex: 1 }
 }
 
 /***********************************************************
