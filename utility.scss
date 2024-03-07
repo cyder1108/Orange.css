@@ -91,6 +91,7 @@
   }
 }
 
+
 /***********************************************************
 * Border
 ***********************************************************/
@@ -402,6 +403,21 @@
 * Overflow
 ***********************************************************/
 .#{class-name("of", "hidden")} { overflow: hidden }
+
+/***********************************************************
+* Transition
+***********************************************************/
+@for $i from 1 through 20 {
+  .#{class-name("ts","#{$i*100}ms")} {
+    transition: all $i * .1s linear;
+  }
+}
+
+.#{class-name("ts-f","linear")} { transition-timing-function: linear; }
+.#{class-name("ts-f","ease")} { transition-timing-function: ease; }
+.#{class-name("ts-f","easeIn")} { transition-timing-function: ease-in; }
+.#{class-name("ts-f","easeOut")} { transition-timing-function: ease-out; }
+.#{class-name("ts-f","easeInOut")} { transition-timing-function: ease-in-out; }
 
 /***********************************************************
 * Unique
